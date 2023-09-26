@@ -1,0 +1,7 @@
+{
+  "defaultSchema": "dataform",
+  "assertionSchema": "dataform_assertions",
+  "warehouse": "bigquery",
+  "defaultDatabase": "bduk-sta-data-01",
+  "defaultLocation": "europe-west2"
+}    

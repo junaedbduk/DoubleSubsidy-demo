@@ -1,0 +1,18 @@
+config { 
+    type: "view" ,
+description: "Subsidy Status mapping.",
+}
+select distinct 
+  'BDUK||VOUCHER' as context
+  ,voucher_status as RecordStatus
+  ,case 
+    when lower(voucher_status) in ('requested', 'disputed', 'cancelled') then 'None'    
+    when lower(voucher_status) = 'issued' then 'In Delivery'
+    when lower(voucher_status) in ('paid', 'claimed', 'approved', 'witheld', 'withheld', 'withheld-with supplier', 'withheld-under review', 'visit_required','visit-required') then 'Delivered' 
+    else null  
+  end as SubsidyStatus
+from 
+  bduk_fibre_datalake_analytics.voucher  
+  ${ref("voucher")}
+where 
+  voucher_status is not null 
