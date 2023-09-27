@@ -12,7 +12,6 @@ select distinct
     else null  
   end as SubsidyStatus
 from 
-  bduk_fibre_datalake_analytics.voucher  
-  ${ref("voucher")}
+  bduk-staging.bduk_fibre_datalake_analytics.voucher
 where 
   voucher_status is not null 
